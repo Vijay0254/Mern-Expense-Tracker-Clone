@@ -6,8 +6,7 @@ const jwtToken = (id, res) =>{
         maxAge: 259200000,
         httpOnly: true, 
         sameSite: process.env.NODE_ENV === "development" ? "strict" : "none",
-        secure: process.env.NODE_ENV !== "development",
-        path: "/"
+        secure: process.env.NODE_ENV !== "development"
     })
 }
 
