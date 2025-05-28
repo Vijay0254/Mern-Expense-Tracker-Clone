@@ -37,8 +37,18 @@ app.use("/api/income", incomeRouter)
 app.use("/api/expense", expenseRouter)
 app.use("/api/dashboard", dashboardRouter)
 
-app.listen(PORT, (err) =>{
-    err ? console.log(`Error in Running Server - ${err.message}`) : console.log(`Server is Running Successfully`)
-    connectDb()
-    connectCloudinary()
-})
+async function startServer() {
+    try {
+        await connectDb(); // connect to MongoDB first
+        await connectCloudinary(); // if it's async too
+
+        app.listen(PORT, () => {
+            console.log(`✅ Server is Running Successfully`);
+        });
+    } catch (err) {
+        console.error(`❌ Error in Starting Server: ${err.message}`);
+        process.exit(1);
+    }
+}
+
+startServer();
