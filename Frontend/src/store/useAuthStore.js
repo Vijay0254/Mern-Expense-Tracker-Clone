@@ -121,7 +121,7 @@ export const useAuthStore = create((set) =>({
     handleLogout: async(navigate) =>{
         set({ isLoggingOut: true })
         try{
-            const response = await Axios.get("/api/auth/logout")
+            const response = await Axios.post("/api/auth/logout")
             if(response.data.message == "Internal Server Error"){
                 navigate('/500')
             }

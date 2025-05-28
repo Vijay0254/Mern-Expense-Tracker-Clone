@@ -6,7 +6,7 @@ const upload = require('../utils/multer')
 
 router.post("/signup", upload.fields([{name: 'profileImg', maxCount: 1}]), signupController)
 router.post("/login", loginController)
-router.get("/logout", logoutController)
+router.post("/logout", logoutController)
 router.get("/verify/token", verifyToken, verifyTokenController)
 
 module.exports = router
