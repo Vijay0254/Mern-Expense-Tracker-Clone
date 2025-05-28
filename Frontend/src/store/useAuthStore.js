@@ -50,6 +50,7 @@ export const useAuthStore = create((set) =>({
         try{
             const response = await Axios.post("/api/auth/login", {email: email, password: password})
             if(response.data.message == "Internal Server Error"){
+                console.log(response.data)
                 navigate('/500')
             }
             if(!response.data.success){
