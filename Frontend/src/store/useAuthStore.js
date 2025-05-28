@@ -16,6 +16,7 @@ export const useAuthStore = create((set) =>({
         try{
             const response = await Axios.get("/api/auth/verify/token")
             if(response.data.message == "Internal Server Error"){
+                console.log(response.data.error)
                 navigate('/500')
             }
             if(response.data.success){
