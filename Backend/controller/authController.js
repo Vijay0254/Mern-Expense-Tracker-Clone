@@ -67,7 +67,8 @@ const logoutController = async(req, res) =>{
     try{
         res.clearCookie("token", {
             sameSite: process.env.NODE_ENV === "development" ? "strict" : "none",
-            secure: process.env.NODE_ENV !== "development"
+            secure: process.env.NODE_ENV !== "development",
+            path: "/"
         })
         return res.status(200).json({success: true, message: "Logout Success"})
     }

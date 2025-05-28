@@ -14,17 +14,7 @@ const expenseRouter = require("./router/expenseRouter")
 const dashboardRouter = require("./router/dashboardRouter")
 
 app.use(cors({
-    origin: function (origin, callback) {
-        const allowedOrigin = process.env.FRONTEND_URL;
-
-        // Allow your main domain + all Vercel preview deployments
-        if (!origin || origin === allowedOrigin || origin.endsWith(".vercel.app")){
-            callback(null, true);
-        } 
-        else{
-            callback(new Error("CORS not allowed for: " + origin));
-        }
-    },
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
